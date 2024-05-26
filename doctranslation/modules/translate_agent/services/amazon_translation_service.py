@@ -1,7 +1,4 @@
 import boto3
-import logging
-
-from doctranslation.modules.common.utils.text_util import detect_language as detect_language_util
 
 from .mixin import TranslationServiceMixin
 

@@ -1,6 +1,7 @@
 from doctranslation.modules.translate_agent.adaptors import TranslationAbtractAdaptor
 from doctranslation.modules.translate_agent.services import AmazonTranslateService
 
+
 class AmazonTranslateAdapter(TranslationAbtractAdaptor):
     def __init__(self, aws_access_key_id, aws_secret_access_key, region_name):
         self.service = AmazonTranslateService(aws_access_key_id, aws_secret_access_key, region_name)
