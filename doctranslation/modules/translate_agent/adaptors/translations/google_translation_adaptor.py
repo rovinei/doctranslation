@@ -8,6 +8,9 @@ class GoogleTranslateAdapter(TranslationAbtractAdaptor):
 
     def translate_text(self, text, target_language):
         return self.service.translate_text(text, target_language)
+    
+    def translate_document(self, file_path, target_language, source_language):
+        return self.service.translate_document(file_path, target_language, source_language)
 
     def detect_language(self, text):
         return self.service.detect_language(text)

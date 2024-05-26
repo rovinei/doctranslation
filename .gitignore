@@ -138,3 +138,4 @@ GitHub.sublime-settings
 .history
 
 secret/
+.DS_Store
