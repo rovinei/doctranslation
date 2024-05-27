@@ -3,7 +3,7 @@ from doctranslation.modules.translate_agent.services import AmazonTranslateServi
 
 
 class AmazonTranslateAdapter(TranslationAbtractAdaptor):
-    def __init__(self, aws_access_key_id, aws_secret_access_key, region_name):
+    def __init__(self, aws_access_key_id, aws_secret_access_key, region_name, **kwargs):
         self.service = AmazonTranslateService(aws_access_key_id, aws_secret_access_key, region_name)
 
     def translate_text(self, text, target_language, source_language):

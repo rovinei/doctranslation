@@ -3,7 +3,7 @@ from doctranslation.modules.translate_agent.services import GoogleTranslateServi
 
 
 class GoogleTranslateAdapter(TranslationAbtractAdaptor):
-    def __init__(self, service_account_key_file):
+    def __init__(self, service_account_key_file, **kwargs):
         self.service = GoogleTranslateService(service_account_key_file)
 
     def translate_text(self, text, target_language):

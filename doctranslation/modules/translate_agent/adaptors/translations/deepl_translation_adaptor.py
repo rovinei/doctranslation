@@ -3,7 +3,7 @@ from doctranslation.modules.translate_agent.services import DeepLTranslateServic
 
 
 class DeepLTranslationAdaptor(TranslationAbtractAdaptor):
-    def __init__(self, auth_key):
+    def __init__(self, auth_key, **kwargs):
         self.service = DeepLTranslateService(auth_key)
 
     def translate_text(self, text, target_language, source_language):
