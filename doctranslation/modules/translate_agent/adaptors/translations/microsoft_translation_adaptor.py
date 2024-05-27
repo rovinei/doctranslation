@@ -3,7 +3,7 @@ from doctranslation.modules.translate_agent.services import MicrosoftTranslateSe
 
 
 class MicrosoftTranslateAdapter(TranslationAbtractAdaptor):
-    def __init__(self, endpoint, subscription_key):
+    def __init__(self, endpoint, subscription_key, **kwargs):
         self.service = MicrosoftTranslateService(endpoint, subscription_key)
 
     def translate_text(self, text, target_language, source_language):

@@ -7,3 +7,6 @@ GOOGLE_ALLOW_TRANSLATE_DOC_MIME_TYPES = [
     "application/vnd.ms-excel", 
     "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
 ]
+
+ALLOW_TRANSLATION_FORM_ENGINE = ['chatgpt', 'google', 'microsoft', 'amazon' 'deepl']
+ALLOW_TRANSLATION_LANGUAGES = ['en-US', 'fr-FR']
