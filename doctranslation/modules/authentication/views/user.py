@@ -1,7 +1,5 @@
 from django.contrib.auth import get_user_model
 from djangorestframework_camel_case.render import CamelCaseJSONRenderer
-from rest_framework.generics import RetrieveAPIView
-from rest_framework.permissions import IsAuthenticated
 from rest_framework.renderers import BrowsableAPIRenderer
 from rest_framework.response import Response
 from rest_framework.views import exception_handler

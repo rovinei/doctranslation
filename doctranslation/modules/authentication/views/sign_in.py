@@ -5,7 +5,7 @@ from rest_framework.permissions import AllowAny, IsAuthenticated
 from rest_framework.response import Response
 from rest_framework.views import APIView
 
-from doctranslation.modules.authentication.serializers import UserSerializer
+from doctranslation.modules.authentication.serializers import UserSerializer, UserSignedInSerializer
 
 class SignInSerializer(serializers.Serializer):
     email = serializers.EmailField(max_length=200)
@@ -35,7 +35,7 @@ class SignInView(APIView):
         signin.is_valid(raise_exception=True)
         user = signin.save()
         login(request, user)
-        return Response(UserSerializer(user).data)
+        return Response(UserSignedInSerializer(user).data)
 
 
 class SignOutView(APIView):
