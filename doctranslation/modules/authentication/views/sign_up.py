@@ -1,16 +1,8 @@
-import requests
-from django.contrib.auth import get_user_model, login, password_validation
-from django.contrib.auth.models import Group
-from django.core.exceptions import ObjectDoesNotExist
+from django.contrib.auth import login
 from django.db import transaction
-from rest_framework import serializers
-from rest_framework.generics import get_object_or_404
 from rest_framework.permissions import AllowAny
 from rest_framework.response import Response
-from rest_framework.validators import UniqueValidator
 from rest_framework.views import APIView
-
-
 
 from doctranslation.modules.authentication.serializers import SignUpSerializer, UserSerializer
 

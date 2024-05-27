@@ -1,19 +1,23 @@
 from django.contrib.auth import get_user_model
 from djangorestframework_camel_case.render import CamelCaseJSONRenderer
 from rest_framework.generics import RetrieveAPIView
-from rest_framework.permissions import AllowAny, IsAuthenticated
+from rest_framework.permissions import IsAuthenticated
 from rest_framework.renderers import BrowsableAPIRenderer
 from rest_framework.response import Response
 from rest_framework.views import exception_handler
-from rest_framework.viewsets import GenericViewSet
 
-from doctranslation.modules.common.views.mixin import BaseModelViewSet
+from doctranslation.modules.authentication.views.base import (
+    APIListView,
+    APIModelViewSet,
+)
+from doctranslation.serialization.exception_handler import exception_handler
+
 
 from ..serializers import UserSerializer
 
 
-class UserView(RetrieveAPIView):
-    permission_classes = (IsAuthenticated,)
+class UserView(APIListView):
+    # permission_classes = (IsAuthenticated,)
     renderer_classes = (CamelCaseJSONRenderer, BrowsableAPIRenderer)
     serializer_class = UserSerializer
 
@@ -26,9 +30,9 @@ class UserView(RetrieveAPIView):
 
 
 class UserViewSet(
-    BaseModelViewSet,
+    APIModelViewSet,
 ):
-    permission_classes = (IsAuthenticated,)
+    # permission_classes = (IsAuthenticated,)
     renderer_classes = (CamelCaseJSONRenderer, BrowsableAPIRenderer)
     serializer_class = UserSerializer
 
