@@ -27,3 +27,31 @@ class UserSerializer(serializers.ModelSerializer):
 
     def get_roles(self, user):
         return [group.name for group in Group.objects.filter(user=user)]
+    
+
+class UserSignedInSerializer(serializers.ModelSerializer):
+    roles = serializers.SerializerMethodField()
+    last_accessed_at = serializers.DateTimeField(default_timezone=ZoneInfo(APP_TIME_ZONE))
+    token = serializers.SerializerMethodField()
+
+    class Meta:
+        model = get_user_model()
+        read_only_fields = (
+            'id',
+            'last_accessed_at',
+        )
+        fields = read_only_fields + (
+            'token',
+            'username',
+            'email',
+            'password',
+            'roles',
+        )
+        extra_kwargs = {'password': {'write_only': True}, 'password_recovery_code': {'write_only': True}}
+
+    def get_roles(self, user):
+        return [group.name for group in Group.objects.filter(user=user)]
+    
+    def get_token(self, user):
+        api_token = user.api_auth_tokens.first()
+        return api_token.key if api_token else None
