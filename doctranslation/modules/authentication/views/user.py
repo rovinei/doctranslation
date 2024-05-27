@@ -7,7 +7,7 @@ from rest_framework.response import Response
 from rest_framework.views import exception_handler
 from rest_framework.viewsets import GenericViewSet
 
-from doctranslation.modules.common.views.mixin import BaseViewSetMixin
+from doctranslation.modules.common.views.mixin import BaseModelViewSet
 
 from ..serializers import UserSerializer
 
@@ -26,12 +26,11 @@ class UserView(RetrieveAPIView):
 
 
 class UserViewSet(
-    BaseViewSetMixin,
-    GenericViewSet,
+    BaseModelViewSet,
 ):
-    permission_classes = (AllowAny,)
-    filterset_class = None
+    permission_classes = (IsAuthenticated,)
+    renderer_classes = (CamelCaseJSONRenderer, BrowsableAPIRenderer)
     serializer_class = UserSerializer
 
     def get_queryset(self):
-        return get_user_model().objects.all()
+        return get_user_model().objects.filter(is_active=True, is_superuser=False)

@@ -5,6 +5,7 @@ from .views import (
     SignInView,
     SignOutView,
     SignUpView,
+    UserView,
     UserViewSet,
 )
 
@@ -18,5 +19,6 @@ urlpatterns = [
     path('sign-up/', SignUpView.as_view(), name='sign-up'),
     path('sign-in/', SignInView.as_view(), name='sign-in'),
     path('sign-out/', SignOutView.as_view(), name='sign-out'),
+    path('me/', UserView.as_view(), name='me'),
     path('', include(router.urls)),
 ]
